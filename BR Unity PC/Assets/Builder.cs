@@ -4,7 +4,12 @@ using System.Collections.Generic;
 
 public class Builder : MonoBehaviour {
 
-	public NavMeshAgent agent;
+	public GameObject player;
+	NavMeshAgent agent;
+
+	void Start() {
+		agent = player.GetComponent<NavMeshAgent> ();
+	}
 
 	public bool PathExists(NavMeshAgent playerAgent, Transform destination) {
 		agent.SetDestination (destination.position);

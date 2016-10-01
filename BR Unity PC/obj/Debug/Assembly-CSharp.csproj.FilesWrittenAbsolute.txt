@@ -1,0 +1,17 @@
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/obj/Debug/Assembly-CSharp.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/UnityEngine.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/UnityEditor.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Mono.Cecil.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Unity.DataContract.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/samtebbs/Documents/GitRepos/HackTheMidlands/BR Unity PC/Temp/bin/Debug/Mono.Cecil.Mdb.dll
