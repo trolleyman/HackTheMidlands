@@ -9,15 +9,14 @@ public class FPSController : MonoBehaviour {
 
 	public KeyCode fire;
 	public GameObject laserPrefab;
-	public GameObject laserBlindnessPrefab;
 	public float laserLength;
+	public float laserDPS;
 	public float verticalOffset;
-	public float laserFadeTime;
+	public float horizontalOffset;
 
 	public float walkSpeed;
 
 	private GameObject laser;
-	private GameObject laserBlindness;
 	private float laserFadeStart;
 	private const int IGNORE_RAYCAST_LAYER = 2;
 
@@ -44,11 +43,9 @@ public class FPSController : MonoBehaviour {
 		move = move * Time.deltaTime * walkSpeed;
 		GetComponent<CharacterController>().Move(move);
 
-		if (Input.GetKeyDown (fire) || GvrController.ClickButtonDown) {
+		if (Input.GetKey (fire) || GvrController.ClickButton) {
 			if (laser != null)
 				Destroy (laser);
-			if (laserBlindness != null)
-				Destroy (laserBlindness);
 
 			Ray ray = new Ray ();
 			ray.origin = origin;
@@ -60,21 +57,21 @@ public class FPSController : MonoBehaviour {
 			RaycastHit info = new RaycastHit ();
 			if (Physics.Raycast (ray, out info, laserLength, ignoreRaycastMask)) {
 				distance = info.distance;
+				Destructible d = info.collider.gameObject.GetComponent(typeof(Destructible)) as Destructible;
+				//Debug.Log (d);
+				if (d != null) {
+					d.Damage (laserDPS * Time.deltaTime);
+					Debug.Log (d.Health);
+				}
 			} else {
 				distance = laserLength;
 			}
+			distance += horizontalOffset;
 
 			laser = Instantiate (laserPrefab);
-			laser.transform.position = (origin + (ray.direction * distance / 2.0f));
+			laser.transform.position = (origin + (ray.direction * (distance / 2.0f - horizontalOffset)));
 			laser.transform.rotation = rotation * Quaternion.FromToRotation(Vector3.up, Vector3.forward);
 			laser.transform.localScale = new Vector3 (0.2f, distance, 0.2f);
-
-			laserBlindness = Instantiate (laserBlindnessPrefab);
-			laserBlindness.transform.parent = Camera.main.transform;
-			laserBlindness.transform.position = (origin + (ray.direction * 0.5f));
-			laserBlindness.transform.rotation = rotation;
-			laserBlindness.transform.localScale = new Vector3 (2.0f, 2.0f, 0.1f);
-			laserFadeStart = Time.timeSinceLevelLoad;
 
 			//Debug.Log ("Distance: " + info.distance);
 			//Debug.Log ("Direction: " + ray.direction);
@@ -82,20 +79,6 @@ public class FPSController : MonoBehaviour {
 		} else {
 			if (laser != null)
 				Destroy (laser);
-
-			if (laserBlindness != null) {
-				float a = 1 - ((Time.timeSinceLevelLoad - laserFadeStart) / laserFadeTime);
-				Material mat = laserBlindness.GetComponent<MeshRenderer> ().material;
-				Color col = mat.color;
-				col.a = a;
-				mat.color = col;
-
-				// Debug.Log ("A: " + mat.color.a);
-
-				if (mat.color.a <= 0.0f) {
-					Destroy (laserBlindness);
-				}
-			}
 		}
 	}
 }

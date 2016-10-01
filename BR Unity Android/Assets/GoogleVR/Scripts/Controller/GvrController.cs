@@ -293,7 +293,7 @@ using UnityEngine;
 using System.Collections;
 
 public class GvrController : MonoBehaviour {
-	public static bool ClickButtonDown {
+	public static bool ClickButton {
 		get {
 			return false;
 		}
