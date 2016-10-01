@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MouseClick : MonoBehaviour {
@@ -19,6 +20,13 @@ public class MouseClick : MonoBehaviour {
 	private const int BOARD_W = 20;
 	private const int BOARD_H = 10;
 
+	private int CURRENT_WWALL = 20;
+	private int CURRENT_SWALL = 10;
+	private int CURRENT_GOAL = 1;
+
+	private const int sWall = 1, wWall = 2, goal = 3;
+	private int currentBlock = sWall;
+
 
 	// Use this for initialization
 	void Start () {
@@ -31,33 +39,48 @@ public class MouseClick : MonoBehaviour {
 		}
 
 		for (int x = 0; x < BOARD_W; x++) {
-			createObject(x, 0, StrongWall);
+			createObject(x, 0, Wall);
 			Debug.Log (x + ", 0");
 		}
 		for (int x = 0; x < BOARD_W; x++) {
-			createObject(x, BOARD_H - 1, StrongWall);
+			createObject(x, BOARD_H - 1, Wall);
 			Debug.Log (x + ", 9");
 		}
 		for (int z = 0; z < BOARD_H; z++) {
-			createObject(0, z, StrongWall);
+			createObject(0, z, Wall);
 		}
 		for (int z = 0; z < BOARD_H; z++) {
-			createObject(BOARD_W - 1, z, StrongWall);
+			createObject(BOARD_W - 1, z, Wall);
 		}
+
 	}
 
 	void createObject(int x, int z, GameObject go) {
 		if (board [x, z] == null) {
 
-			if (go == StrongWall) {
+			if (go == StrongWall && CURRENT_SWALL > 0) {
 				board [x, z] = buildStrongWall (x - BOARD_X_OFFSET, z - BOARD_Z_OFFSET);
-			} else if (go == WeakWall) {
+				CURRENT_SWALL--;
+			} else if (go == WeakWall && CURRENT_WWALL > 0) {
 				board [x, z] = buildWeakWall (x - BOARD_X_OFFSET, z - BOARD_Z_OFFSET);
+				CURRENT_WWALL--;
+			} else if (go == Goal && CURRENT_GOAL > 0) {
+				board [x, z] = buildGoal (x - BOARD_X_OFFSET, z - BOARD_Z_OFFSET);
+				CURRENT_GOAL--;
+			} else if (go == Wall) {
+				board [x, z] = buildWall (x - BOARD_X_OFFSET, z - BOARD_Z_OFFSET);
 			} else if (go == Empty) {
 				Debug.Log ("Nothing to remove");
 			}
 		} else {
-			if (go == Empty) {
+			if (go == Empty && (board [x, z].tag != "Invulnerable")) {
+				if (board [x, z].tag == "WeakWall") {
+					CURRENT_WWALL++;
+				} else if (board [x, z].tag == "StrongWall") {
+					CURRENT_SWALL++;
+				} else if (board [x, z].tag == "Goal") {
+					CURRENT_GOAL++;
+				}
 				board [x, z] = removeWall (x, z);
 			} else {
 				Debug.Log ("Not a valid position");
@@ -69,6 +92,12 @@ public class MouseClick : MonoBehaviour {
 	public GameObject removeWall(int x, int y) {
 		Destroy (board [x, y]);
 		return null;
+	}
+
+	public GameObject buildWall(float x, float z) {
+		Vector3 pos = new Vector3(x, 0.0f, z);
+		GameObject wall = Instantiate (Wall, pos, Quaternion.identity) as GameObject;
+		return wall;
 	}
 
 	public GameObject buildStrongWall(float x, float z) {
@@ -83,6 +112,22 @@ public class MouseClick : MonoBehaviour {
 		return weakWall;
 	}
 
+	public GameObject buildGoal(float x, float z) {
+		Vector3 pos = new Vector3(x, 0.0f, z);
+		GameObject gl = Instantiate (Goal, pos, Quaternion.identity) as GameObject;
+		return gl;
+	}
+
+	public GameObject intToGO(int current) {
+		if (current == sWall) {
+			return StrongWall;
+		} else if (current == wWall) {
+			return WeakWall;
+		} else {
+			return Goal;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButton (0)) {
@@ -93,7 +138,7 @@ public class MouseClick : MonoBehaviour {
 			int z = (int)Mathf.Round(mousePosSecond.z);
 			Debug.Log ("Second point recorded" + mousePosSecond);
 
-			createObject (x + BOARD_X_OFFSET, z + BOARD_Z_OFFSET, WeakWall);
+			createObject (x + BOARD_X_OFFSET, z + BOARD_Z_OFFSET, intToGO(currentBlock));
 		}
 		if (Input.GetMouseButton (1)) {
 			var mousePosSecond = Input.mousePosition;
@@ -104,6 +149,18 @@ public class MouseClick : MonoBehaviour {
 			Debug.Log ("Second point recorded" + mousePosSecond);
 
 			createObject (x + BOARD_X_OFFSET, z + BOARD_Z_OFFSET, Empty);
+		}
+		if (Input.GetKeyDown ("1")) {
+			currentBlock = sWall;
+			Debug.Log ("Strong wall selected");
+		}
+		if (Input.GetKeyDown ("2")) {
+			currentBlock = wWall;
+			Debug.Log ("Weak wall selected");
+		}
+		if (Input.GetKeyDown ("3")) {
+			currentBlock = goal;
+			Debug.Log ("Goal selected");
 		}
 	}
 }
