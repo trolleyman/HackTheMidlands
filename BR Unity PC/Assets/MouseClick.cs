@@ -20,8 +20,8 @@ public class MouseClick : MonoBehaviour {
 	private const int BOARD_W = 20;
 	private const int BOARD_H = 10;
 
-	private int CURRENT_WWALL = 20;
-	private int CURRENT_SWALL = 10;
+	private int CURRENT_WWALL = 30;
+	private int CURRENT_SWALL = 20;
 	private int CURRENT_GOAL = 1;
 
 	private const int sWall = 1, wWall = 2, goal = 3;
