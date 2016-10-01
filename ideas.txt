@@ -1,6 +1,0 @@
-Ideas
---- Jumping platform game
- - Press button to jump
- - Look to side to switch lanes
-
----
