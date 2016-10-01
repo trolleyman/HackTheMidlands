@@ -8,8 +8,8 @@ public class PlayerInput : NetworkBehaviour {
 	void Update () {
 		Debug.Log ("Update");
 		Debug.Log ("Going to move");
-		var x = Input.GetAxis ("Horizontal");
-		var z = Input.GetAxis ("Vertical");
+		var x = Input.GetAxis ("Horizontal") * 0.1f;
+		var z = Input.GetAxis ("Vertical") * 0.1f;
 		transform.Translate (x, 0, z);
 	}
 }
