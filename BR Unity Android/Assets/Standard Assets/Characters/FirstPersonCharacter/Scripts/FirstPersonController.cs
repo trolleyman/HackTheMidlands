@@ -28,9 +28,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-		private GameObject m_Head;
-		private Camera m_LeftCamera;
-		private Camera m_RightCamera;
+		private GameObject m_Player;
         private bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
@@ -48,17 +46,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
-			m_Head = GameObject.FindGameObjectWithTag ("Head");
-			m_LeftCamera =  GameObject.FindGameObjectWithTag ("LeftCamera") .GetComponent<Camera>();
-			m_RightCamera = GameObject.FindGameObjectWithTag ("RightCamera").GetComponent<Camera>();
-            m_OriginalCameraPosition = m_Head.transform.localPosition;
-            m_FovKick.Setup(m_LeftCamera);
-			m_HeadBob.Setup(m_LeftCamera, m_StepInterval); // TODO: Sort out head bobbing, FOVKick (whatever that is!)
+			m_Player = GameObject.FindGameObjectWithTag ("Player");
+			m_OriginalCameraPosition = m_Player.transform.localPosition;
             m_StepCycle = 0f;
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Head.transform);
         }
 
 
@@ -183,25 +176,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void UpdateCameraPosition(float speed)
         {
-            Vector3 newCameraPosition;
-            if (!m_UseHeadBob)
-            {
-                return;
-            }
-            if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
-            {
-                m_Head.transform.localPosition =
-                    m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
-                                      (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
-                newCameraPosition = m_Head.transform.localPosition;
-                newCameraPosition.y = m_Head.transform.localPosition.y - m_JumpBob.Offset();
-            }
-            else
-            {
-                newCameraPosition = m_Head.transform.localPosition;
-                newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
-            }
-            m_Head.transform.localPosition = newCameraPosition;
+
         }
 
 
@@ -240,7 +215,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Head.transform);
         }
 
 
