@@ -293,5 +293,10 @@ using UnityEngine;
 using System.Collections;
 
 public class GvrController : MonoBehaviour {
+	public static bool ClickButtonDown {
+		get {
+			return false;
+		}
+	}
 }
 #endif  // UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
