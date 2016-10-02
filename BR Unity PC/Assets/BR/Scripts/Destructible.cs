@@ -49,13 +49,19 @@ public class Destructible : MonoBehaviour {
 			return;
 		}
 
-		int stage = Mathf.FloorToInt((1.0f - Mathf.Min(1.0f, health / maxHealth)) * 9.0f);
+		float progress = (1.0f - Mathf.Min (1.0f, health / maxHealth));
+		int stage = Mathf.FloorToInt(progress * 9.0f);
 		MeshRenderer r = GetComponent<MeshRenderer> ();
 		// Debug.Log ("stage: " + stage);
 		// Debug.Log ("destroy: " + destroy [stage]);
 		Material[] mats = r.materials;
 		mats.SetValue (destroy [stage], 1);
 		r.materials = mats;
+
+		ParticleSystem s = GetComponent<ParticleSystem> ();
+		if (s != null) {
+			s.startSize = progress;
+		}
 	}
 
 	// Update is called once per frame

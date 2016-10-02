@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 0f3f537ab5a86694ea9ef29a60618e8b
-timeCreated: 1475352646
+guid: bc8f3e1331fcf4646a3b485cd5e15511
+timeCreated: 1475400230
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - destroy1: {fileID: 2100000, guid: 5d42427dcc4ba7d4896b5f64e30c24bb, type: 2}
+  - destroy2: {fileID: 2100000, guid: 49c1b257cbb8c0549bc80b9bf8e9847a, type: 2}
+  - destroy3: {fileID: 2100000, guid: e4961714c67fe4a4fb0e7aa657f67d38, type: 2}
+  - destroy4: {fileID: 2100000, guid: 75787ae348ef0ad4e93c8089f2d75b87, type: 2}
+  - destroy5: {fileID: 2100000, guid: f503f29b0322cd14f88a7c0174a9c49a, type: 2}
+  - destroy6: {fileID: 2100000, guid: b7567bdef486b294b870905eee6e3884, type: 2}
+  - destroy7: {fileID: 2100000, guid: 9b4437f853a25cd4eb3987074f6771a9, type: 2}
+  - destroy8: {fileID: 2100000, guid: 96da16348b8204941bc452fd2f23e6ac, type: 2}
+  - destroy9: {fileID: 2100000, guid: 5bdd4288f49e1414ca43e46dfdafab3e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
