@@ -45,10 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BR\Scripts\BurnManager.cs" />
+     <Compile Include="Assets\BR\Scripts\Destructible.cs" />
+     <Compile Include="Assets\BR\Scripts\FPSController.cs" />
+     <Compile Include="Assets\BR\Scripts\MoveABit.cs" />
+     <Compile Include="Assets\BR\Scripts\SleepController.cs" />
      <Compile Include="Assets\Builder.cs" />
      <Compile Include="Assets\Hunter.cs" />
      <Compile Include="Assets\MouseClick.cs" />
      <Compile Include="Assets\PlayerInput.cs" />
+     <Compile Include="Assets\TrackPlayer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -8,6 +8,8 @@ public class MouseClick : MonoBehaviour {
 	public GameObject WeakWall;
 	public GameObject Wall;
 	public GameObject Goal;
+	public GameObject Monster;
+	public GameObject MonsterMarker;
 	public GameObject Empty;
 
 	private bool isDown1;
@@ -23,8 +25,9 @@ public class MouseClick : MonoBehaviour {
 	private int CURRENT_WWALL = 30;
 	private int CURRENT_SWALL = 20;
 	private int CURRENT_GOAL = 1;
+	private int CURRENT_MONSTER = 1;
 
-	private const int sWall = 1, wWall = 2, goal = 3;
+	private const int sWall = 1, wWall = 2, goal = 3, monster = 4;
 	private int currentBlock = sWall;
 
 
@@ -69,6 +72,9 @@ public class MouseClick : MonoBehaviour {
 				CURRENT_GOAL--;
 			} else if (go == Wall) {
 				board [x, z] = buildWall (x - BOARD_X_OFFSET, z - BOARD_Z_OFFSET);
+			} else if (go == Monster && CURRENT_MONSTER > 0) {
+				board [x, z] = buildMonster (x - BOARD_X_OFFSET, z - BOARD_Z_OFFSET);
+				CURRENT_MONSTER--;
 			} else if (go == Empty) {
 				Debug.Log ("Nothing to remove");
 			}
@@ -80,6 +86,8 @@ public class MouseClick : MonoBehaviour {
 					CURRENT_SWALL++;
 				} else if (board [x, z].tag == "Goal") {
 					CURRENT_GOAL++;
+				} else if (board [x, z].tag == "Monster") {
+					CURRENT_MONSTER++;
 				}
 				board [x, z] = removeWall (x, z);
 			} else {
@@ -118,13 +126,24 @@ public class MouseClick : MonoBehaviour {
 		return gl;
 	}
 
+	public GameObject buildMonster(float x, float z) {
+		Vector3 pos = new Vector3(x, 0.0f, z);
+		GameObject mon = Instantiate (Monster, pos, Quaternion.identity) as GameObject;
+		pos.y = -0.95f;
+		GameObject monMark = Instantiate (MonsterMarker, pos, Quaternion.identity) as GameObject;
+		mon.transform.parent = monMark.transform;
+		return monMark;
+	}
+
 	public GameObject intToGO(int current) {
 		if (current == sWall) {
 			return StrongWall;
 		} else if (current == wWall) {
 			return WeakWall;
-		} else {
+		} else if (current == goal) {
 			return Goal;
+		} else {
+			return Monster;
 		}
 	}
 
@@ -161,6 +180,10 @@ public class MouseClick : MonoBehaviour {
 		if (Input.GetKeyDown ("3")) {
 			currentBlock = goal;
 			Debug.Log ("Goal selected");
+		}
+		if (Input.GetKeyDown ("4")) {
+			currentBlock = monster;
+			Debug.Log ("Monster selected");
 		}
 	}
 }
