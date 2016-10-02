@@ -43,7 +43,13 @@ public class FPSController : MonoBehaviour {
 		move = move * Time.deltaTime * walkSpeed;
 		GetComponent<CharacterController>().Move(move);
 
-		if (Input.GetKey (fire) || GvrController.ClickButton) {
+		bool touchEvent = false;
+
+		foreach (Touch t in Input.touches)
+			if (t.phase == TouchPhase.Began || t.phase == TouchPhase.Moved || t.phase == TouchPhase.Stationary)
+				touchEvent = true;
+
+		if (Input.GetKey (fire) || touchEvent) {
 			if (laser != null)
 				Destroy (laser);
 

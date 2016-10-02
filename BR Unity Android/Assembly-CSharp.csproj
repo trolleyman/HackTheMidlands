@@ -3,8 +3,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{E075194C-8EAF-F009-B91C-A765F2E1368A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -33,81 +34,83 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BR\Scripts\FPSController.cs" />
-    <Compile Include="Assets\BR\Scripts\MoveABit.cs" />
-    <Compile Include="Assets\BR\Scripts\SleepController.cs" />
-    <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDebugInfo.cs" />
-    <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDemoManager.cs" />
-    <Compile Include="Assets\GoogleVR\DemoScenes\HeadsetDemo\Teleport.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\GvrHead.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrCameraUtils.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrEye.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrPostRender.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrPreRender.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrProfile.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\StereoController.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\StereoRenderEffect.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\AndroidDevice.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\BaseAndroidDevice.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\BaseVRDevice.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\EditorDevice.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\GvrDevice.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\UnityVRDevice.cs" />
-    <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\iOSDevice.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudio.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioListener.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioRoom.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioSoundfield.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioSource.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\GvrController.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviderFactory.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\AndroidNativeControllerProvider.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\DummyControllerProvider.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\EmulatorControllerProvider.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerState.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorClientSocket.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorConfig.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorDataTypes.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorManager.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\PhoneEvent.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\IControllerProvider.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\GazeInputModule.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\GvrSettings.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\GvrViewer.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Pose3D.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\UI\GvrGaze.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\UI\GvrReticle.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazePointer.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazeResponder.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrFPS.cs" />
-    <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrIntent.cs" />
-    <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />
-    <None Include="Assets\GoogleVR\Legacy\Resources\UnlitTexture.shader" />
-    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-    <None Include="Assets\Plugins\Android\AndroidManifest-Daydream.xml" />
-    <None Include="Assets\GoogleVR\Resources\UI\GvrReticleShader.shader" />
-    <None Include="Assets\Plugins\Android\AndroidManifest-Cardboard.xml" />
-    <None Include="Assets\GoogleVR\Legacy\Resources\SolidColor.shader" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.ProtocolBuffers">
-      <HintPath>C:\Dev\HackTheMidlands\BR Unity Android\Assets\Plugins\Google.ProtocolBuffers.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\BR\Scripts\BurnManager.cs" />
+     <Compile Include="Assets\BR\Scripts\Destructible.cs" />
+     <Compile Include="Assets\BR\Scripts\FPSController.cs" />
+     <Compile Include="Assets\BR\Scripts\MoveABit.cs" />
+     <Compile Include="Assets\BR\Scripts\SleepController.cs" />
+     <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDebugInfo.cs" />
+     <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDemoManager.cs" />
+     <Compile Include="Assets\GoogleVR\DemoScenes\HeadsetDemo\Teleport.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\GvrHead.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrCameraUtils.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrEye.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrPostRender.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrPreRender.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\GvrProfile.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\StereoController.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\StereoRenderEffect.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\AndroidDevice.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\BaseAndroidDevice.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\BaseVRDevice.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\EditorDevice.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\GvrDevice.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\UnityVRDevice.cs" />
+     <Compile Include="Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\iOSDevice.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudio.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioListener.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioRoom.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioSoundfield.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioSource.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\GvrController.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviderFactory.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\AndroidNativeControllerProvider.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\DummyControllerProvider.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\EmulatorControllerProvider.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerState.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorClientSocket.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorConfig.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorDataTypes.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorManager.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\PhoneEvent.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\IControllerProvider.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\GazeInputModule.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\GvrSettings.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\GvrViewer.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Pose3D.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\UI\GvrGaze.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\UI\GvrReticle.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazePointer.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazeResponder.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrFPS.cs" />
+     <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrIntent.cs" />
+     <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />
+     <None Include="Assets\GoogleVR\Legacy\Resources\UnlitTexture.shader" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\Plugins\Android\AndroidManifest-Daydream.xml" />
+     <None Include="Assets\GoogleVR\Resources\UI\GvrReticleShader.shader" />
+     <None Include="Assets\Plugins\Android\AndroidManifest-Cardboard.xml" />
+     <None Include="Assets\GoogleVR\Legacy\Resources\SolidColor.shader" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.ProtocolBuffers">
+ <HintPath>C:/Dev/HackTheMidlands/BR Unity Android/Assets/Plugins/Google.ProtocolBuffers.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -117,7 +120,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Assets\Scripts\" />
-  </ItemGroup>
+  
 </Project>

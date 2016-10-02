@@ -34,6 +34,11 @@ public class Destructible : MonoBehaviour {
 			destroy8,
 			destroy9
 		};
+
+		MeshRenderer r = GetComponent<MeshRenderer> ();
+		Material[] mats = new Material[] { r.material };
+		mats.SetValue (destroy [0], 1);
+		r.materials = mats;
 	}
 
 	public void Damage (float damageBy) {
@@ -46,8 +51,11 @@ public class Destructible : MonoBehaviour {
 
 		int stage = Mathf.FloorToInt((1.0f - Mathf.Min(1.0f, health / maxHealth)) * 9.0f);
 		MeshRenderer r = GetComponent<MeshRenderer> ();
-		Debug.Log ("stage: " + stage);
-		r.materials.SetValue (destroy[stage], 1);
+		// Debug.Log ("stage: " + stage);
+		// Debug.Log ("destroy: " + destroy [stage]);
+		Material[] mats = r.materials;
+		mats.SetValue (destroy [stage], 1);
+		r.materials = mats;
 	}
 
 	// Update is called once per frame
@@ -55,3 +63,4 @@ public class Destructible : MonoBehaviour {
 		
 	}
 }
+
