@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class TrackPlayer : MonoBehaviour {
+public class TrackPlayer : NetworkBehaviour {
 	public GameObject player;
 
 	// Use this for initialization

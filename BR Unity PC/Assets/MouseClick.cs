@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class MouseClick : MonoBehaviour {
+public class MouseClick : NetworkBehaviour {
 
 	public GameObject StrongWall;
 	public GameObject WeakWall;
@@ -105,24 +106,28 @@ public class MouseClick : MonoBehaviour {
 	public GameObject buildWall(float x, float z) {
 		Vector3 pos = new Vector3(x, 0.0f, z);
 		GameObject wall = Instantiate (Wall, pos, Quaternion.identity) as GameObject;
+		NetworkServer.Spawn (wall);
 		return wall;
 	}
 
 	public GameObject buildStrongWall(float x, float z) {
 		Vector3 pos = new Vector3(x, 0.0f, z);
 		GameObject strongWall = Instantiate (StrongWall, pos, Quaternion.identity) as GameObject;
+		NetworkServer.Spawn (strongWall);
 		return strongWall;
 	}
 
 	public GameObject buildWeakWall(float x, float z) {
 		Vector3 pos = new Vector3(x, 0.0f, z);
 		GameObject weakWall = Instantiate (WeakWall, pos, Quaternion.identity) as GameObject;
+		NetworkServer.Spawn (weakWall);
 		return weakWall;
 	}
 
 	public GameObject buildGoal(float x, float z) {
 		Vector3 pos = new Vector3(x, 0.0f, z);
 		GameObject gl = Instantiate (Goal, pos, Quaternion.identity) as GameObject;
+		NetworkServer.Spawn (gl);
 		return gl;
 	}
 
@@ -132,6 +137,8 @@ public class MouseClick : MonoBehaviour {
 		pos.y = -0.95f;
 		GameObject monMark = Instantiate (MonsterMarker, pos, Quaternion.identity) as GameObject;
 		mon.transform.parent = monMark.transform;
+		NetworkServer.Spawn (mon);
+		//NetworkServer.Spawn (monMark);
 		return monMark;
 	}
 

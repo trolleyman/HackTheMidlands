@@ -6,15 +6,16 @@ public class Hunter : NetworkBehaviour {
 
 	NavMeshAgent agent;
 	float time = 0f;
-	public float fov = 60.0f;
+	public float fov = 360.0f;
 
-	bool SetDestination(Transform destination) {
+	[ClientRpc]
+	void RpcSetDestination(Vector3 destination) {
 		time = 0f;
-		if (LineOfSight (destination)) {
-			agent.SetDestination (destination.position);
-			return agent.hasPath;
-		} else
-			return false;
+		Debug.Log ("going to move");
+		//if (LineOfSight (destination)) {
+			agent.SetDestination (destination);
+		//}
+		Debug.Log ("moved");
 	}
 
 	bool LineOfSight (Transform target) {
@@ -31,11 +32,11 @@ public class Hunter : NetworkBehaviour {
 
 	void OnTriggerStay(Collider collider) {
 		time += Time.deltaTime;
-		if (time >= 0.25f) SetDestination (collider.transform);
+		if (time >= 0.25f) RpcSetDestination (collider.transform.position);
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		SetDestination (collider.transform);
+		RpcSetDestination (collider.transform.position);
 	}
 
 	void OnTriggerExit(Collider collider) {
