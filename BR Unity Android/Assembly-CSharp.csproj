@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BR\Assets\MouseClick.cs" />
+     <Compile Include="Assets\BR\Assets\PlayerInput.cs" />
      <Compile Include="Assets\BR\Scripts\BurnManager.cs" />
      <Compile Include="Assets\BR\Scripts\Destructible.cs" />
      <Compile Include="Assets\BR\Scripts\FPSController.cs" />
@@ -95,6 +97,7 @@
      <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazeResponder.cs" />
      <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrFPS.cs" />
      <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrIntent.cs" />
+     <Compile Include="Assets\MazeGenerator.cs" />
      <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />
      <None Include="Assets\GoogleVR\Legacy\Resources\UnlitTexture.shader" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
