@@ -8,14 +8,11 @@ public class Hunter : NetworkBehaviour {
 	float time = 0f;
 	public float fov = 360.0f;
 
-	[ClientRpc]
-	void RpcSetDestination(Vector3 destination) {
+	void SetDestination(Transform destination) {
 		time = 0f;
-		Debug.Log ("going to move");
 		//if (LineOfSight (destination)) {
-			agent.SetDestination (destination);
+			agent.SetDestination (destination.position);
 		//}
-		Debug.Log ("moved");
 	}
 
 	bool LineOfSight (Transform target) {
@@ -26,17 +23,16 @@ public class Hunter : NetworkBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collider) {
-		Debug.Log ("COllision enter");
 		GameObject.Destroy (collider.gameObject);
 	}
 
 	void OnTriggerStay(Collider collider) {
 		time += Time.deltaTime;
-		if (time >= 0.25f) RpcSetDestination (collider.transform.position);
+		if (time >= 0.25f) SetDestination (collider.transform);
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		RpcSetDestination (collider.transform.position);
+		SetDestination (collider.transform);
 	}
 
 	void OnTriggerExit(Collider collider) {
